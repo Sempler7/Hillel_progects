@@ -1,10 +1,10 @@
-import os
 from log_event_module import log_event, logger, LOG_FILE
-
+import os
+import pytest
 
 def read_log_file():
-    assert os.path.exists(LOG_FILE), "Файл логування не створено"
-    with open(LOG_FILE, "r") as f:
+    assert os.path.join(os.path.dirname(__file__),LOG_FILE), "Файл логування не створено"
+    with open(LOG_FILE, "r", encoding="utf-8") as f:
         return f.read()
 
 def test_log_success():
